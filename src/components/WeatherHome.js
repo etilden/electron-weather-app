@@ -9,12 +9,17 @@ export default class WeatherHome extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({start: new Date(0 )})
+    this.setState({start: new Date()})
   }
 
   render() {
+    console.log(this.state.start)
     return(
-      <div>Words Stuff</div>
+      <>
+        <div>Words Stuff</div>
+        <div>{this.state.start+''}</div>
+        <div> We have liftoff </div>
+      </>
     )
   }
 }

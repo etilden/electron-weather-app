@@ -13,7 +13,7 @@
     "react-scripts": "3.4.1",
     "wait-on": "^4.0.1"
   },
-  "main": "src/main.js",
+  "main": "./src/main.js",
   "homepage": "./",
   "scripts": {
     "react-start": "react-scripts start",

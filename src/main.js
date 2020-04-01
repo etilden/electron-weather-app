@@ -20,7 +20,8 @@ function createWindow() {
 
 
   //load app's index.html file
-  mainWindow.loadFile('../public/index.html');
+  // mainWindow.loadFile('../public/index.html');
+  mainWindow.loadURL('http://localhost:3000/')
 
   //when main windows closed app will quit
   mainWindow.on('closed', function() { app.quit() })
