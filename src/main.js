@@ -5,19 +5,22 @@ const url = require('url');
 function createWindow() {
   //create the browser window
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js') ,
-      nodeIntegration: false
-    }
+    width: 1140,
+    height: 400,
+    minWidth:1140,
+    minHeight: 400
+    // webPreferences: {
+    //   preload: path.join(__dirname, 'preload.js') ,
+    //   nodeIntegration: false
+    // }
   })
 
   // eslint-disable-next-line no-console
   console.log(require.resolve('electron'))
 
+
   //load app's index.html file
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('../public/index.html');
 
   //when main windows closed app will quit
   mainWindow.on('closed', function() { app.quit() })
@@ -26,7 +29,7 @@ function createWindow() {
   mainWindow.webContents.openDevTools();
 
   const startUrl = process.env.DEV_URL || url.format({
-    pathname: path.join(__dirname, '/../build/index/html'),
+    pathname: path.join(__dirname, '/../public/index.html'),
     protocol: 'file:',
     slashes: true
   })
