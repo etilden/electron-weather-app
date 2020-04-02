@@ -7,7 +7,7 @@
 
 import { rendererPreload } from 'electron-routes';
 
-rendererPreload(); 
+rendererPreload();
 
 // fetch('myscheme://foo')
 //   .then(resp => resp.json())

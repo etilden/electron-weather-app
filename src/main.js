@@ -6,36 +6,37 @@ function createWindow() {
   //create the browser window
   const mainWindow = new BrowserWindow({
     width: 1140,
-    height: 400,
-    minWidth:1140,
-    minHeight: 400
+    height: 400
     // webPreferences: {
     //   preload: path.join(__dirname, 'preload.js') ,
     //   nodeIntegration: false
     // }
   })
 
-  // eslint-disable-next-line no-console
-  console.log(require.resolve('electron'))
-
-
-  //load app's index.html file
-  // mainWindow.loadFile('../public/index.html');
-  mainWindow.loadURL('http://localhost:3000/')
-
-  //when main windows closed app will quit
-  mainWindow.on('closed', function() { app.quit() })
-
-  // Troubleshooting? Open DevTools! 
-  mainWindow.webContents.openDevTools();
-
-  const startUrl = process.env.DEV_URL || url.format({
-    pathname: path.join(__dirname, '/../public/index.html'),
+  const startUrl = process.env.ELECTRON_START_URL || url.format({
+    pathname: path.join(__dirname, '/../build/index.html'),
     protocol: 'file:',
     slashes: true
   })
 
   mainWindow.loadURL(startUrl)
+
+  // eslint-disable-next-line no-console
+  // console.log(require.resolve('electron'))
+
+  // Troubleshooting? Open DevTools! 
+  mainWindow.webContents.openDevTools();
+
+  //load app's index.html file
+  // mainWindow.loadURL(`file://${__dirname}/index.html`);
+  // mainWindow.loadURL('http://localhost:3000/')
+
+  //when main windows closed app will quit
+  mainWindow.on('closed', function() { app.quit() })
+
+  // mainWindow.on('closed', function() {
+  //   mainWindow = null
+  // })
 }
 
 //when Electron has completed initialization it calls the .on method
