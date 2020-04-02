@@ -1,9 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
+import weatherReducer from "./reducers/weatherData"
+
+//For more of that young weather
+// https://openweathermap.org/api
 
 const reducer = combineReducers({
-  //reducers go here
+  weather: weatherReducer
 }); 
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}));

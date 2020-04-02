@@ -1,11 +1,23 @@
 import React from 'react';
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { withRouter, Route, Switch } from "react-router-dom";
+import { fetchWeatherData } from "../store/reducers/weatherData"
 import WeatherHome from "./WeatherHome"
 // import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     weather: {}
+  //   }
+  // }
+
+  componentDidMount() {
+    this.props.fetchWeatherData()
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,4 +43,16 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+// const mapStateToProps = state => {
+//   return {
+//     weather: state.weather,
+//   };
+// };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchWeatherData: () => dispatch(fetchWeatherData()),
+  };
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

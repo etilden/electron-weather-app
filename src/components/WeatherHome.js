@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from "react-redux";
 
-export default class WeatherHome extends React.Component {
+class WeatherHome extends React.Component {
   constructor(props) {
     super(props)
     this.state={
@@ -23,3 +24,11 @@ export default class WeatherHome extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    weather: state.weather
+  }
+}
+
+export default connect(mapStateToProps)(WeatherHome)
