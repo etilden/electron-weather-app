@@ -14,12 +14,11 @@ class WeatherHome extends React.Component {
   }
 
   render() {
-    console.log(this.state.start)
     return(
       <>
-        <div>Words Stuff</div>
         <div>{this.state.start+''}</div>
-        <div> We have liftoff </div>
+        {this.props.weather.weather ? 
+        <div><div>{this.props.weather.weather[0].main}</div><div>{this.props.weather.weather[0].description}</div></div> : null } 
       </>
     )
   }
