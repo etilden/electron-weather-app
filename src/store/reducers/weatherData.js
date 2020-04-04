@@ -9,14 +9,13 @@ const setWeatherData = weatherData => {
   };
 };
 
-const url =
-  'http://api.openweathermap.org/data/2.5/weather?q=Chicago&units=imperial&APPID=948907a92e0e6427643a8f49f8d73e96';
 
-export const fetchWeatherData = () => {
+export const fetchWeatherData = (id) => {
+  const url = `http://api.openweathermap.org/data/2.5/weather?id=${id}&units=imperial&APPID=c6ad0b9d50b71969591fe04ba504bcc3`;
   return async dispatch => {
     try {
-      const response = await axios.get(url)
-      dispatch(setWeatherData(response.data))
+      const { data } = await axios.get(url)
+      dispatch(setWeatherData(data))
     } catch (err) {
       console.log(err)
     };

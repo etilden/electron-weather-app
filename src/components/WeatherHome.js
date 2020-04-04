@@ -2,26 +2,31 @@ import React from 'react';
 import { connect } from "react-redux";
 import ReactAutocomplete from 'react-autocomplete';
 import cities from "../city.list.json";
-// import useScript from "../hooks/useScript"
-// import { query } from "../hooks/query"
+import { fetchWeatherData } from "../store/reducers/weatherData";
 
 class WeatherHome extends React.Component {
   constructor(props) {
     super(props)
     this.state={
       start: null,
-      value: ''
+      value: '',
+      selectedCity: null,
     }
+    this.weatherGetter = this.weatherGetter.bind(this)
   }
 
   componentDidMount() {
     this.setState({start: new Date()})
-    // useScript("https://code.jquery.com/jquery-1.12.4.js")
-    // useScript("https://code.jquery.com/ui/1.12.1/jquery-ui.js")
-    // useScript(query)
+  }
+
+  weatherGetter(value, item) {
+    this.setState({ value: '', selectedCity: item })
+    this.props.fetchWeatherData(item.id)
   }
 
   render() {
+    console.log('props', this.props);
+    console.log('state', this.state)
     return(
       <>
         <div>{this.state.start+''}</div>
@@ -38,12 +43,14 @@ class WeatherHome extends React.Component {
             >
               {item.name}
             </div>
+
           }
           value={this.state.value}
           onChange={e => this.setState({ value: e.target.value })}
-          onSelect={value => this.setState({ value })}
+          onSelect={(value, item) => this.weatherGetter(value, item)}
           open={this.state.value.length >= 3}
         />
+        {this.state.selectedCity ? <div>You have selected {this.state.selectedCity.name}, id: {this.state.selectedCity.id} </div> : null}
       </>
     )
   }
@@ -55,4 +62,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(WeatherHome)
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchWeatherData: (id) => dispatch(fetchWeatherData(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherHome)
