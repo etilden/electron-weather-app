@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, session, ipcMain} = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -37,6 +37,11 @@ function createWindow() {
   // mainWindow.on('closed', function() {
   //   mainWindow = null
   // })
+
+  //sessions
+  // let session = mainWindow.webContents.session
+  // console.log(session.getUserAgent())
+  //https://www.electronjs.org/docs/api/session
 }
 
 //when Electron has completed initialization it calls the .on method

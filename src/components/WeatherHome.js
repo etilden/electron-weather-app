@@ -25,8 +25,6 @@ class WeatherHome extends React.Component {
   }
 
   render() {
-    console.log('props', this.props);
-    console.log('state', this.state)
     return(
       <>
         <div>{this.state.start+''}</div>
