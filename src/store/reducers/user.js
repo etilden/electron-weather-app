@@ -16,7 +16,7 @@ export const fetchUserData = userId => {
   return async dispatch => {
     try {
       const { data } = await axios.get(url)
-      dispatch(setUser)
+      dispatch(setUser(data))
     } catch(err) {
       console.log(err)
     }
