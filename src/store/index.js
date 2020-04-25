@@ -1,7 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
-import weatherReducer from "./reducers/weatherData"
+import weatherReducer from "./reducers/weatherData";
+import citiesReducer from "./city";
 import userReducer from "./reducers/user";
 
 //For more of that young weather
@@ -9,7 +10,8 @@ import userReducer from "./reducers/user";
 
 const reducer = combineReducers({
   weather: weatherReducer, 
-  user: userReducer
+  user: userReducer,
+  cities: citiesReducer
 }); 
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}));

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ReactAutocomplete from 'react-autocomplete';
 // import cities from "../city.list.json";
 import { fetchWeatherData } from "../store/reducers/weatherData";
+import { fetchCityArray } from "../store/reducers/city"
 
 class WeatherHome extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class WeatherHome extends React.Component {
 
   componentDidMount() {
     this.setState({start: new Date()})
-    this.cities = this.props.fetchCities(); 
+    this.cities = this.props.fetchCityArray(); 
   }
 
   weatherGetter(value, item) {
@@ -58,13 +59,15 @@ class WeatherHome extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    weather: state.weather
+    weather: state.weather,
+    cities: state.cities
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchWeatherData: (id) => dispatch(fetchWeatherData(id))
+    fetchWeatherData: (id) => dispatch(fetchWeatherData(id)),
+    fetchCityArray: () => dispatch(fetchCityArray())
   }
 }
 
