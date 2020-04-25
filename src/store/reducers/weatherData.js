@@ -10,8 +10,8 @@ const setWeatherData = weatherData => {
 };
 
 
-export const fetchWeatherData = (id) => {
-  const url = `http://api.openweathermap.org/data/2.5/weather?id=${id}&units=imperial&APPID=c6ad0b9d50b71969591fe04ba504bcc3`;
+export const fetchWeatherData = cityId => {
+  const url = `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=imperial&APPID=c6ad0b9d50b71969591fe04ba504bcc3`;
   return async dispatch => {
     try {
       const { data } = await axios.get(url)
