@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Route, Switch } from "react-router-dom";
 import WeatherHome from "./WeatherHome"
+import Login from './login'
 // import logo from './logo.svg';
 import './App.css';
 
@@ -21,6 +22,7 @@ function App(props) {
           Learn React
         </a>
       </header> */}
+      <Login />
       <Switch>
         <Route exact path="/" component={WeatherHome} />
       </Switch>

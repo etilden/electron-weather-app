@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import weatherReducer from "./reducers/weatherData";
-import citiesReducer from "./city";
+import citiesReducer from "./reducers/city";
 import userReducer from "./reducers/user";
 
 //For more of that young weather

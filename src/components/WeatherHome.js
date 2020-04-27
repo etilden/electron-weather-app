@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
 import ReactAutocomplete from 'react-autocomplete';
-// import cities from "../city.list.json";
 import { fetchWeatherData } from "../store/reducers/weatherData";
 import { fetchCityArray } from "../store/reducers/city"
 
@@ -14,12 +13,11 @@ class WeatherHome extends React.Component {
       selectedCity: null,
     }
     this.weatherGetter = this.weatherGetter.bind(this)
-    this.cities = [];
   }
 
   componentDidMount() {
     this.setState({start: new Date()})
-    this.cities = this.props.fetchCityArray(); 
+    this.props.fetchCityArray(); 
   }
 
   weatherGetter(value, item) {
@@ -34,7 +32,7 @@ class WeatherHome extends React.Component {
         {this.props.weather.weather ? 
         <div><div>{this.props.weather.weather[0].main}</div><div>{this.props.weather.weather[0].description}</div></div> : null } 
         <ReactAutocomplete
-          items={this.cities}
+          items={this.props.cities}
           shouldItemRender={(item, value) => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1}
           getItemValue={item => item.name}
           renderItem={(item, highlighted) =>
