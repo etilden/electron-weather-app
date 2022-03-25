@@ -10,7 +10,7 @@
     "chalk": "^4.0.0",
     "concurrently": "^5.1.0",
     "crypto": "^1.0.1",
-    "electron": "^8.2.0",
+    "electron": "^13.6.6",
     "pg": "^8.0.0",
     "pg-hstore": "^2.3.3",
     "react": "^16.13.1",
